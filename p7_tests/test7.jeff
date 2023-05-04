@@ -17,5 +17,5 @@ fn : (int i) int main {
     console << i;
     foo();
     bar(i, 2, 3, 4, 5, 6, 7, 8, 9);
-    return a;
+    return 0;
 }
