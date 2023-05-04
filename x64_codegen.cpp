@@ -223,7 +223,7 @@ void NopQuad::codegenX64(std::ostream& out){
 }
 
 void CallQuad::codegenX64(std::ostream& out){
-	out << "call " << sym->getName() << "\n";
+	out << "callq " << sym->getName() << "\n";
 }
 
 void EnterQuad::codegenX64(std::ostream& out){
