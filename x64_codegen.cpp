@@ -284,25 +284,25 @@ void SetArgQuad::codegenX64(std::ostream& out){
 
 void GetArgQuad::codegenX64(std::ostream& out){
 	std::string memLoc = opd->getMemoryLoc();
-	out << "movq ";
+	
 	switch (index) { 
 		case 1:
-			out << "%rdi, " << memLoc << "\n";
+			out << "movq " << "%rdi, " << memLoc << "\n";
 			break;
 		case 2:
-			out << "%rsi, " << memLoc << "\n";
+			out << "movq " << "%rsi, " << memLoc << "\n";
 			break;
 		case 3:
-			out << "%rdx, " << memLoc << "\n";
+			out << "movq " << "%rdx, " << memLoc << "\n";
 			break;
 		case 4:
-			out << "%rcx, " << memLoc << "\n";
+			out << "movq " << "%rcx, " << memLoc << "\n";
 			break;
 		case 5:
-			out << "%r8, " << memLoc << "\n";
+			out << "movq " << "%r8, " << memLoc << "\n";
 			break;
 		case 6:
-			out << "%r9, " << memLoc << "\n";
+			out << "movq " << "%r9, " << memLoc << "\n";
 			break;
 	}
 }
