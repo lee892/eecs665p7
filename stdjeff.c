@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <time.h>
+#include <string.h>
 
 void printBool(int64_t c){
 	if (c == 0){
@@ -14,8 +15,10 @@ void printBool(int64_t c){
 
 FILE * stdJeff_openFP(const char * s, int mode) {
 	if (mode == 1) {
+		fprintf("opening %s for writing\n", s);
 		return fopen(s, "w");
 	} else {
+		fprintf("opening %s for reading\n", s);
 		return fopen(s, "r");
 	}
 }
@@ -35,14 +38,29 @@ long int stdJeff_readInt(FILE* f) {
 	return res;
 }
 
-long int stdJeff_readBool(FILE* f) {
-	char c;
-	scanf("%c", &c);
-	getchar(); // Consume trailing newline
-	if (c == '0'){
-		return 0;
+void stdJeff_readString(FILE* in, FILE* out) {
+	char* line = NULL;
+	size_t len = 0;
+	if (in == 1) {
+		getline(&line, &len, stdin);
 	} else {
+		getline(&line, &len, in);
+	}
+	fprintf(out, "%s", line);
+	fflush(out);
+}
+
+long int stdJeff_readBool(FILE* f) {
+	char buffer[32];
+	if (f == 1) {
+		fgets(buffer, 32, stdin);
+	} else {
+		fgets(buffer, 32, f);
+	}
+	if (strcmp(buffer, "true")) {
 		return 1;
+	} else {
+		return 0;
 	}
 }
 

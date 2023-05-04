@@ -181,22 +181,25 @@ void AssignQuad::codegenX64(std::ostream& out){
 
 void ReadQuad::codegenX64(std::ostream& out){
 	if (myHandle->locString() != "console") {
-		myHandle->genLoadVal(out, SI);
+		myHandle->genLoadVal(out, DI);
 	} else {
-		out << "movq $1, %rsi\n";
+		out << "movq $1, %rdi\n";
 	}
-	myDst->genLoadVal(out, DI);
 	if (myDstType->isInt()) {
 		out << "callq stdJeff_readInt\n";
-	} else if (myDstType->isString()) {
+	} else if (myDstType->isFile()) {
+		myDst->genLoadVal(out, SI);
 		out << "callq stdJeff_readString\n";
+		return;
 	} else if (myDstType->isBool()) {
 		out << "callq stdJeff_readBool\n";
 	}
+	myDst->genStoreVal(out, A);
 }
 
 void WriteQuad::codegenX64(std::ostream& out){
 	if (myHandle->locString() != "console") {
+
 		myHandle->genLoadVal(out, SI);
 	} else {
 		out << "movq $0, %rsi\n";
@@ -213,6 +216,11 @@ void WriteQuad::codegenX64(std::ostream& out){
 
 void OpenQuad::codegenX64(std::ostream& out){
 	myPath->genLoadVal(out, DI); // Load th sstring address  into argument
+	if (myReadOnly) {
+		out << "movq $0, %rsi\n";
+	} else {
+		out << "movq $1, %rsi\n";
+	}
 	out << "callq stdJeff_openFP\n";
 	myHandle->genStoreVal(out, A); // Retrieve the FILE* pointer
 }
@@ -273,7 +281,7 @@ void SetArgQuad::codegenX64(std::ostream& out){
 			opd->genLoadVal(out,C);
 			break;
 		case 5:
-			opd->genLoadVal(out, C); // r8
+			out << "movq $6, %r8\n"; // r8
 			break;	
 		case 6:
 			out << "movq $6, %r9\n"; // r9

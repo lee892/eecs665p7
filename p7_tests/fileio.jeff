@@ -1,0 +1,24 @@
+
+
+fn : () int main {
+    int i;
+    bool b;
+    console >> i;
+    console >> b;
+
+    console << "so this works\n";
+    console << i;
+    console << "\n";
+    console << b;
+    console << "\n";
+
+    file f1;
+    open << f1 "fileio2.txt";
+    f1 << "hello\n";
+    close f1;
+    
+    file f2;
+    open >> f2 "fileio1.txt";
+    console << f2;
+    close f2;
+}
