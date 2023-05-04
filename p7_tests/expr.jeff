@@ -18,7 +18,8 @@ fn : () int main {
     console << "\n";
     console << j != 10000;
     console << "\n";
-    console << a > j;
+    console << a >= j;
+    console << 201 <= 200;
     console << "\n";
     j = a;
     k = false && (j != 500) || (j <= 5000);
@@ -28,4 +29,7 @@ fn : () int main {
     console << a;
     console << "\n";
     console << 3 - 2;
+    console << true && true;
+    console << "\n";
+    console << true || false;
 }

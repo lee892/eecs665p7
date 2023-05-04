@@ -24,6 +24,17 @@ void stdJeff_closeFP(FILE* fp) {
 	fclose(fp);
 }
 
+long int stdJeff_readInt(FILE* f) {
+	char buffer[32];
+	if (f == 1) {
+		fgets(buffer, 32, stdin);
+	} else {
+		fgets(buffer, 32, f);
+	}
+	long int res = atol(buffer);
+	return res;
+}
+
 void stdJeff_writeInt(long int num, FILE* f) {
 	if (f == 0) {
 		fprintf(stdout, "%ld", num);

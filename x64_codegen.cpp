@@ -48,22 +48,22 @@ void IRProgram::toX64(std::ostream& out){
 void Procedure::allocLocals(){
 	//Allocate space for locals
 	// Iterate over each procedure and codegen it
-	int count = 0;
+	int count = -24;
 	for (auto itr : locals) {
 		SymOpd* symOpd = itr.second;
-		std::string memLoc = std::to_string(count) + "(%rsp)";
+		std::string memLoc = std::to_string(count) + "(%rbp)";
 		symOpd->setMemoryLoc(memLoc);
 		count -= int(symOpd->getWidth());
 	}
 	for (auto temp : temps) {
 		AuxOpd* auxOpd = temp;
-		std::string memLoc = std::to_string(count) + "(%rsp)";
+		std::string memLoc = std::to_string(count) + "(%rbp)";
 		auxOpd->setMemoryLoc(memLoc);
 		count -= int(auxOpd->getWidth());
 	}
 	for (auto formal : formals) {
 		SymOpd* symOpd = formal;
-		std::string memLoc = std::to_string(count) + "(%rsp)";
+		std::string memLoc = std::to_string(count) + "(%rbp)";
 		symOpd->setMemoryLoc(memLoc);
 		count -= int(symOpd->getWidth());
 	}
@@ -130,22 +130,22 @@ void BinOpQuad::codegenX64(std::ostream& out){
 			out << "setne " << RegUtils::reg8(B) << "\n";
 			break;
 		case BinOp::LT64:
-			out << "cmpq " << RegUtils::reg64(A) << ", " << RegUtils::reg64(B) << "\n";
+			out << "cmpq " << RegUtils::reg64(B) << ", " << RegUtils::reg64(A) << "\n";
 			out << "movq $0, " << RegUtils::reg64(B) << "\n";
 			out << "setl " << RegUtils::reg8(B) << "\n";
 			break;
 		case BinOp::GT64:
-			out << "cmpq " << RegUtils::reg64(A) << ", " << RegUtils::reg64(B) << "\n";
+			out << "cmpq " << RegUtils::reg64(B) << ", " << RegUtils::reg64(A) << "\n";
 			out << "movq $0, " << RegUtils::reg64(B) << "\n";
 			out << "setg " << RegUtils::reg8(B) << "\n";
 			break;
 		case BinOp::LTE64:
-			out << "cmpq " << RegUtils::reg64(A) << ", " << RegUtils::reg64(B) << "\n";
+			out << "cmpq " << RegUtils::reg64(B) << ", " << RegUtils::reg64(A) << "\n";
 			out << "movq $0, " << RegUtils::reg64(B) << "\n";
 			out << "setle " << RegUtils::reg8(B) << "\n";
 			break;
 		case BinOp::GTE64:
-			out << "cmpq " << RegUtils::reg64(A) << ", " << RegUtils::reg64(B) << "\n";
+			out << "cmpq " << RegUtils::reg64(B) << ", " << RegUtils::reg64(A) << "\n";
 			out << "movq $0, " << RegUtils::reg64(B) << "\n";
 			out << "setge " << RegUtils::reg8(B) << "\n";
 			break;
@@ -180,7 +180,19 @@ void AssignQuad::codegenX64(std::ostream& out){
 }
 
 void ReadQuad::codegenX64(std::ostream& out){
-	TODO(Implement me)
+	if (myHandle->locString() != "console") {
+		myHandle->genLoadVal(out, SI);
+	} else {
+		out << "movq $1, %rsi\n";
+	}
+	myDst->genLoadVal(out, DI);
+	if (myDstType->isInt()) {
+		out << "callq stdJeff_writeInt\n";
+	} else if (myDstType->isString()) {
+		out << "callq stdJeff_writeString\n";
+	} else if (myDstType->isBool()) {
+		out << "callq stdJeff_writeBool\n";
+	}
 }
 
 void WriteQuad::codegenX64(std::ostream& out){

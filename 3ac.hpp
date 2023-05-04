@@ -45,7 +45,7 @@ public:
 			case C: return "c";
 			case D: return "d";
 			case DI: return "di";
-			case SI: return "di";
+			case SI: return "si";
 		}
 	}
 
