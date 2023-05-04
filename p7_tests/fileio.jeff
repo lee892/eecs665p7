@@ -19,6 +19,5 @@ fn : () int main {
     
     file f2;
     open >> f2 "fileio1.txt";
-    console << f2;
     close f2;
 }
