@@ -227,7 +227,9 @@ void GotoQuad::codegenX64(std::ostream& out){
 }
 
 void IfzQuad::codegenX64(std::ostream& out){
-	TODO(Implement me)
+    cnd->genLoadVal(out, DI);
+    out << "cmpq $0, %rdi\n";
+    out << "je " << tgt->toString();
 }
 
 void NopQuad::codegenX64(std::ostream& out){
