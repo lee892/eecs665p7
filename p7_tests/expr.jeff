@@ -1,0 +1,31 @@
+int a;
+int b;
+bool c;
+
+fn: () void func {
+
+}
+
+fn : () int main {
+    int j;
+    bool k;
+    bool l;
+    j = 234;
+    console << j / 3;
+    console << "\n";
+    a = 1000 * 3 + j / 2 - 7;
+    console << a * 3;
+    console << "\n";
+    console << j != 10000;
+    console << "\n";
+    console << a > j;
+    console << "\n";
+    j = a;
+    k = false && (j != 500) || (j <= 5000);
+    l = (a > j) && (j >= a);
+    console << k != l;
+    console << "\n";
+    console << a;
+    console << "\n";
+    console << 3 - 2;
+}

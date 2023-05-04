@@ -1,0 +1,14 @@
+int a;
+int b;
+bool c;
+
+
+fn : () int main {
+    int j;
+    int a;
+    j = 234;
+    a = 1000;
+    j = a;
+    console << "hello\n";
+    console << j;
+}
