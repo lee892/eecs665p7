@@ -235,7 +235,7 @@ void NopQuad::codegenX64(std::ostream& out){
 }
 
 void CallQuad::codegenX64(std::ostream& out){
-	out << "callq " << sym->getName() << "\n";
+	out << "callq fun_" << sym->getName() << "\n";
 	size_t cleanup;
 	if (numArgs >= 7) {
 		cleanup = 8*(numArgs-6);

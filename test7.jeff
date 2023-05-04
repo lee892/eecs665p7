@@ -1,5 +1,19 @@
+fn : () int foo {
+    int i;
+    i = 1;
+    console << i;
+    return i;
+}
+
+fn : (int i) int bar {
+    i = 1;
+    console << i;
+    return i;
+}
 fn : (int a, int b, int c, int d, int e, int f, int g, int h, int i) int main {
     i = 1;
     console << i;
+    foo();
+    bar(i);
     return a;
 }

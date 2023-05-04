@@ -1,0 +1,74 @@
+int a;
+int b;
+
+fn : () void function{
+    a = b;
+    open << f"/tmp/writeme.txt";
+    close f;
+    a--;
+    b++;
+    a >> b;
+    a << b/b;
+    a << b-b;
+    a << b+c;
+    a << j+c-j;
+    a << -a;
+    a << !a;
+    a = (a + 9) / 10 && 100;
+    a << "a";
+    return x;
+    while(j <= false){
+        int a;
+        int b;
+    }
+    a = true;
+    return;
+    ab();
+    if(a >= b){
+        int a;
+        int b;
+        a >> a[2];
+        b << a[2] / 2;
+        b >> a;
+    }
+    else
+    {
+        a = a - b;
+        int a;
+        k = (a?a:b);
+        int b;
+    }
+    a = a >= false;
+    a = false;
+    x = false;
+    a = dsda();
+    a = a > dad();
+    dsadsa();
+    kjsd(a-c,b*c,c,a[i]);
+    a = a[i];
+    a[i] = c;
+    console = a[i+i];
+    console << "dsadsadd";
+}
+
+fn: () int function{
+    a = c;
+}
+
+fn: () void test{
+    int [4] arr;
+    while(a*a){
+        console << "hello";
+        if(a <= a) {return a;}
+        if(a != 2){
+            return;
+        }
+        else {
+            return 2;
+            while(a >= a+1) {
+                console << "Jack";}
+        }
+    }
+}
+
+fn: () void test{ return 1 + (2 * 3); }
