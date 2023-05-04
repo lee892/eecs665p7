@@ -224,10 +224,6 @@ void NopQuad::codegenX64(std::ostream& out){
 
 void CallQuad::codegenX64(std::ostream& out){
 	out << "call " << sym->getName() << "\n";
-	out << "pushq %rbp\n";
-	out << "movq %rsp, %rbp\n";
-	out << "addq $16, %rbp\n";
-	out << "subq $16, %rsp\n";
 }
 
 void EnterQuad::codegenX64(std::ostream& out){
