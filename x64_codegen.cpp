@@ -260,16 +260,22 @@ void SetArgQuad::codegenX64(std::ostream& out){
 	switch (index) { 
 		case 1:
 			opd->genLoadVal(out,DI);
+			break;
 		case 2:
 			opd->genLoadVal(out,SI);
+			break;
 		case 3:
 			opd->genLoadVal(out,D);	
+			break;
 		case 4:
 			opd->genLoadVal(out,C);
+			break;
 		case 5:
-			opd->genLoadVal(out, C); // r8	
+			opd->genLoadVal(out, C); // r8
+			break;	
 		case 6:
 			out << "movq $6, %r9\n"; // r9
+			break;
 		default:
 			opd->genLoadVal(out, A);
 			out << "pushq %rax\n";
@@ -282,16 +288,22 @@ void GetArgQuad::codegenX64(std::ostream& out){
 	switch (index) { 
 		case 1:
 			out << "%rdi, " << memLoc << "\n";
+			break;
 		case 2:
 			out << "%rsi, " << memLoc << "\n";
+			break;
 		case 3:
 			out << "%rdx, " << memLoc << "\n";
+			break;
 		case 4:
 			out << "%rcx, " << memLoc << "\n";
+			break;
 		case 5:
 			out << "%r8, " << memLoc << "\n";
+			break;
 		case 6:
 			out << "%r9, " << memLoc << "\n";
+			break;
 	}
 }
 

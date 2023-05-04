@@ -75,8 +75,8 @@ std::string CloseQuad::repr(){
 	return "close " + myHandle->valString();
 }
 
-CallQuad::CallQuad(SemSymbol * calleeIn)
-: sym(calleeIn){ }
+CallQuad::CallQuad(SemSymbol * calleeIn, size_t myArgs)
+: sym(calleeIn), numArgs(myArgs){ }
 
 std::string CallQuad::repr(){
 	return "call " + sym->getName();
@@ -223,8 +223,8 @@ std::string SetArgQuad::repr(){
 	return res;
 }
 
-GetArgQuad::GetArgQuad(size_t indexIn, Opd * opdIn, bool isRecordIn)
-: index(indexIn), opd(opdIn){
+GetArgQuad::GetArgQuad(size_t indexIn, Opd * opdIn, bool isRecordIn, Procedure* proc)
+: index(indexIn), opd(opdIn), myProc(proc){
 }
 
 std::string GetArgQuad::repr(){
