@@ -245,10 +245,12 @@ void NopQuad::codegenX64(std::ostream& out){
 }
 
 void CallQuad::codegenX64(std::ostream& out){
+	out << "pushq $0 \n";
 	out << "callq fun_" << sym->getName() << "\n";
 	size_t cleanup;
 	if (numArgs >= 7) {
 		cleanup = 8*(numArgs-6);
+		if (cleanup % 16 != 0) cleanup = cleanup + 8;
 		out << "addq $" << cleanup << ", %rsp\n";
 	}
 }
@@ -316,6 +318,7 @@ void GetArgQuad::codegenX64(std::ostream& out){
 			break;
 		default:
 			size_t numArgs = myProc->getFormals().size();
+			if (numArgs % 2 != 0) numArgs = numArgs + 1;
 			size_t stackIndex = 8 * (numArgs - index);
 			out << "movq " << stackIndex << "(%rbp), %rbx\n";
 			out << "movq %rbx, " << memLoc << "\n";
