@@ -310,11 +310,11 @@ void GetArgQuad::codegenX64(std::ostream& out){
 }
 
 void SetRetQuad::codegenX64(std::ostream& out){
-	opd->genStoreVal(out, A);
+	opd->genLoadVal(out, A);
 }
 
 void GetRetQuad::codegenX64(std::ostream& out){
-	opd->genLoadVal(out, A);
+	opd->genStoreVal(out, A);
 }
 
 void LocQuad::codegenX64(std::ostream& out){
