@@ -35,6 +35,17 @@ long int stdJeff_readInt(FILE* f) {
 	return res;
 }
 
+long int stdJeff_readBool(FILE* f) {
+	char c;
+	scanf("%c", &c);
+	getchar(); // Consume trailing newline
+	if (c == '0'){
+		return 0;
+	} else {
+		return 1;
+	}
+}
+
 void stdJeff_writeInt(long int num, FILE* f) {
 	if (f == 0) {
 		fprintf(stdout, "%ld", num);

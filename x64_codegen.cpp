@@ -187,11 +187,11 @@ void ReadQuad::codegenX64(std::ostream& out){
 	}
 	myDst->genLoadVal(out, DI);
 	if (myDstType->isInt()) {
-		out << "callq stdJeff_writeInt\n";
+		out << "callq stdJeff_readInt\n";
 	} else if (myDstType->isString()) {
-		out << "callq stdJeff_writeString\n";
+		out << "callq stdJeff_readString\n";
 	} else if (myDstType->isBool()) {
-		out << "callq stdJeff_writeBool\n";
+		out << "callq stdJeff_readBool\n";
 	}
 }
 
