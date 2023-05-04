@@ -237,12 +237,10 @@ void NopQuad::codegenX64(std::ostream& out){
 void CallQuad::codegenX64(std::ostream& out){
 	out << "callq " << sym->getName() << "\n";
 	size_t cleanup;
-	if (myProc->numFormals() >= 7) {
-		cleanup = 8*(myProc->numFormals()-6);
+	if (numArgs >= 7) {
+		cleanup = 8*(numArgs-6);
 		out << "addq $" << cleanup << ", %rsp\n";
-	}
-	size_t cleanup = 8*(myProc->numFormals()-6);
-	out << "addq $" << cleanup << ", %rsp\n";		
+	}	
 }
 
 void EnterQuad::codegenX64(std::ostream& out){

@@ -406,12 +406,12 @@ private:
 
 class CallQuad : public Quad{
 public:
-	CallQuad(SemSymbol * calleeIn, Procedure * proc);
+	CallQuad(SemSymbol * calleeIn, size_t numArgs);
 	std::string repr() override;
 	void codegenX64(std::ostream& out) override;
 private:
 	SemSymbol * sym;
-	Procedure * myProc;
+	size_t numArgs;
 };
 
 class EnterQuad : public Quad{
