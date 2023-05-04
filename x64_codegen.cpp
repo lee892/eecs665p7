@@ -227,8 +227,6 @@ void CallQuad::codegenX64(std::ostream& out){
 }
 
 void EnterQuad::codegenX64(std::ostream& out){
-	size_t cleanup = 8*(myProc->numFormals()-8);
-	out << "addq $" << cleanup << ", %rsp\n";
 	out << "pushq %rbp\n";
 	out << "movq %rsp, %rbp\n";
 	out << "addq $16, %rbp\n";
