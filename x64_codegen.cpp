@@ -245,7 +245,9 @@ void NopQuad::codegenX64(std::ostream& out){
 }
 
 void CallQuad::codegenX64(std::ostream& out){
-	out << "pushq $0 \n";
+	if (numArgs >= 7 && numArgs % 2 != 0) {
+		out << "pushq $0 \n";
+	}
 	out << "callq fun_" << sym->getName() << "\n";
 	size_t cleanup;
 	if (numArgs >= 7) {
