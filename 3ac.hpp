@@ -45,7 +45,7 @@ public:
 			case C: return "c";
 			case D: return "d";
 			case DI: return "di";
-			case SI: return "di";
+			case SI: return "si";
 		}
 	}
 
@@ -504,6 +504,7 @@ public:
 	void toX64(std::ostream& out);
 	size_t arSize() const;
 	size_t numTemps() const;
+	size_t numFormals() const;
 
 	std::list<Quad *> * getQuads(){ return bodyQuads; }
 	EnterQuad * getEnter(){ return enter; }

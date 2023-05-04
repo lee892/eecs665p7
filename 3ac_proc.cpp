@@ -131,6 +131,10 @@ size_t Procedure::numTemps() const{
 	return this->temps.size();
 }
 
+size_t Procedure::numFormals() const {
+	return this->formals.size();
+}
+
 size_t Procedure::arSize() const{
 	size_t size = 0;
 	for (auto local : locals){
