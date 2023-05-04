@@ -267,7 +267,7 @@ void SetArgQuad::codegenX64(std::ostream& out){
 
 void GetArgQuad::codegenX64(std::ostream& out){
 	std::string memLoc = opd->getMemoryLoc();
-	out << "movq "
+	out << "movq ";
 	switch (index) { 
 		case 1:
 			out << "%rdi, " << memLoc << "\n";
