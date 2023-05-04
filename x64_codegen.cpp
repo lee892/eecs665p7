@@ -250,7 +250,7 @@ void CallQuad::codegenX64(std::ostream& out){
 	if (numArgs >= 7) {
 		cleanup = 8*(numArgs-6);
 		out << "addq $" << cleanup << ", %rsp\n";
-	}	
+	}
 }
 
 void EnterQuad::codegenX64(std::ostream& out){
@@ -313,6 +313,12 @@ void GetArgQuad::codegenX64(std::ostream& out){
 			break;
 		case 6:
 			out << "movq " << "%r9, " << memLoc << "\n";
+			break;
+		default:
+			size_t numArgs = myProc->getFormals().size();
+			size_t stackIndex = 8 * (numArgs - index);
+			out << "movq " << stackIndex << "(%rbp), %rbx\n";
+			out << "movq %rbx, " << memLoc << "\n";
 			break;
 	}
 }

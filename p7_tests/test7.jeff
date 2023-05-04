@@ -6,16 +6,13 @@ fn : () int foo {
 }
 
 fn : (int a, int b, int c, int d, int e, int f, int g, int h, int i) int bar {
-    i = 1;
-    console << i;
-    console << e;
-    console << h;
-    return i;
+    console << "doesn't get to here\n";
+    console << a;
 }
-fn : (int i) int main {
+fn : () int main {
+    int i;
     i = 1;
     console << i;
-    foo();
     bar(i, 2, 3, 4, 5, 6, 7, 8, 9);
     return 0;
 }
