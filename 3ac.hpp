@@ -406,11 +406,12 @@ private:
 
 class CallQuad : public Quad{
 public:
-	CallQuad(SemSymbol * calleeIn);
+	CallQuad(SemSymbol * calleeIn, Procedure * proc);
 	std::string repr() override;
 	void codegenX64(std::ostream& out) override;
 private:
 	SemSymbol * sym;
+	Procedure * myProc;
 };
 
 class EnterQuad : public Quad{
@@ -447,13 +448,14 @@ private:
 
 class GetArgQuad : public Quad{
 public:
-	GetArgQuad(size_t indexIn, Opd * opdIn, bool isRecord);
+	GetArgQuad(size_t indexIn, Opd * opdIn, bool isRecord, Procedure * proc);
 	std::string repr() override;
 	void codegenX64(std::ostream& out) override;
 	Opd * getDst(){ return opd; }
 private:
 	size_t index;
 	Opd * opd;
+	Procedure * myProc;
 };
 
 class SetRetQuad : public Quad{

@@ -20,8 +20,7 @@ static void formalsTo3AC(Procedure * proc,
 	for (auto formal : *myFormals){
 		SemSymbol * sym = formal->ID()->getSymbol();
 		SymOpd * opd = proc->getSymOpd(sym);
-
-		Quad * inQuad = new GetArgQuad(argIdx, opd, false);
+		Quad * inQuad = new GetArgQuad(argIdx, opd, false, proc);
 		proc->addQuad(inQuad);
 		argIdx += 1;
 	}
@@ -104,7 +103,7 @@ static void argsTo3AC(Procedure * proc, std::list<ExpNode *> * args){
 
 Opd * CallExpNode::flatten(Procedure * proc){
 	argsTo3AC(proc, myArgs);
-	Quad * callQuad = new CallQuad(myID->getSymbol());
+	Quad * callQuad = new CallQuad(myID->getSymbol(), proc);
 	proc->addQuad(callQuad);
 
 	SemSymbol * idSym = myID->getSymbol();
