@@ -33,7 +33,7 @@ private:
 };
 
 enum Register{
-	A, B, C, D, DI, SI
+	A, B, C, D, DI, SI, R8, R9
 };
 
 class RegUtils{
@@ -46,6 +46,8 @@ public:
 			case D: return "d";
 			case DI: return "di";
 			case SI: return "si";
+			case R8: return "r8";
+			case R9: return "r9";
 		}
 	}
 
@@ -57,6 +59,8 @@ public:
 			case D: return "%rdx";
 			case DI: return "%rdi";
 			case SI: return "%rsi";
+			case R8: return "%r8";
+			case R9: return "%r9";
 		}
 		throw new InternalError("no such register");
 	}
@@ -69,6 +73,8 @@ public:
 			case D: return "%dl";
 			case DI: return "%dil";
 			case SI: return "%sil";
+			case R8: return "%r8b";
+			case R9: return "%r9b";
 		}
 		throw new InternalError("no such register");
 	}

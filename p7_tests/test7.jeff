@@ -8,6 +8,7 @@ fn : () int foo {
 fn : (int a, int b, int c, int d, int e, int f, int g, int h, int i) int bar {
     console << "doesn't get to here\n";
     console << a;
+    console << e;
 }
 fn : () int main {
     int i;
