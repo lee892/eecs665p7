@@ -285,10 +285,10 @@ void SetArgQuad::codegenX64(std::ostream& out){
 			opd->genLoadVal(out,C);
 			break;
 		case 5:
-			out << "movq $6, %r8\n"; // r8
+			opd->genLoadVal(out, R8);
 			break;	
 		case 6:
-			out << "movq $6, %r9\n"; // r9
+			opd->genLoadVal(out, R9);
 			break;
 		default:
 			opd->genLoadVal(out, A);
