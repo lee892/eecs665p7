@@ -15,10 +15,8 @@ void printBool(int64_t c){
 
 FILE * stdJeff_openFP(const char * s, int mode) {
 	if (mode == 1) {
-		fprintf("opening %s for writing\n", s);
 		return fopen(s, "w");
 	} else {
-		fprintf("opening %s for reading\n", s);
 		return fopen(s, "r");
 	}
 }

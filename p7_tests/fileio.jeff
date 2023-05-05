@@ -14,12 +14,24 @@ fn : () int main {
 
     file f1;
     open << f1 "fileio1.txt";
-    f1 << "hello\n";
     f1 << b;
+    f1 << "\nhello\n";
     f1 << i;
+    f1 << "\ntrue";
+    bool c;
+    c = true;
+    f1 >> c;
+    console << c;
+    console << "\n";
     close f1;
-    
+
     file f2;
     open >> f2 "fileio2.txt";
+    int j;
+    f2 << 100;
+    f2 >> j;
+    f2 >> c;
+    console << j;
+    console << c;
     close f2;
 }

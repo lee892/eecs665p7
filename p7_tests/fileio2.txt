@@ -1,1 +1,2 @@
-text inside fileio2.txt
+90000
+true
