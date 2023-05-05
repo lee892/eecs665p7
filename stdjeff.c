@@ -53,11 +53,11 @@ void stdJeff_readString(FILE* in, FILE* out) {
 long int stdJeff_readBool(FILE* f) {
 	char buffer[32];
 	if (f == 1) {
-		fgets(buffer, 32, stdin);
+		fscanf(stdin, "%s", buffer);
 	} else {
-		fgets(buffer, 32, f);
+		fscanf(f, "%s", buffer);
 	}
-	if (strcmp(buffer, "true")) {
+	if (strcmp(buffer, "true") == 0) {
 		return 1;
 	} else {
 		return 0;

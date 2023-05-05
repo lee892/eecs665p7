@@ -1,0 +1,16 @@
+fn : () int main {
+    int j;
+    int a;
+    a = 5;
+    j = 234 - 17 + a;
+    while (j != 200 && a <= 5) {
+        j = j - 1;
+        if (j == 210) {
+            a = 6;
+        } else {
+            console << "aaaaaah";
+        }
+        console << j;
+        console << "\n";
+    }
+}

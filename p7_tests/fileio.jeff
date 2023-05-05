@@ -13,11 +13,13 @@ fn : () int main {
     console << "\n";
 
     file f1;
-    open << f1 "fileio2.txt";
+    open << f1 "fileio1.txt";
     f1 << "hello\n";
+    f1 << b;
+    f1 << i;
     close f1;
     
     file f2;
-    open >> f2 "fileio1.txt";
+    open >> f2 "fileio2.txt";
     close f2;
 }

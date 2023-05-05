@@ -22,11 +22,12 @@ fn : () int main {
     console << 201 <= 200;
     console << "\n";
     j = a;
-    k = false && (j != 500) || (j <= 5000);
-    l = (a > j) && (j >= a);
-    console << k != l;
+    k = false && (j != 500) || (j < 5000);
+    l = !((a > j) && (j >= a));
+    console << l;
+    console << k == l;
     console << "\n";
-    console << a;
+    console << -a;
     console << "\n";
     console << 3 - 2;
     console << true && true;

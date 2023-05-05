@@ -1,0 +1,32 @@
+fn : () int foo {
+    int i;
+    i = 1;
+    console << i;
+    return i;
+}
+
+fn : (int i) int bar {
+    if (i == 0) {
+        return 0;
+    }
+    if (i == 1) {
+        return 1;
+    }
+
+    return bar(i-2) + bar(i-1);
+}
+fn : (int a, int b, int c, int d, int e, int f, int g, int h, int i) int main {
+    i = 1;
+    if (i == 1) {
+        i = 2;
+    }
+    while (i > 0) {
+        i = i - 1;
+    }
+    a = ((9 > 8) ? 20 : 3 + 4) * 10;
+    console << foo();
+    console << a;
+    console << "\n";
+    console << bar(8);
+    return a;
+}

@@ -1,1 +1,2 @@
-text inside fileio1.txt
+hello
+true1050
